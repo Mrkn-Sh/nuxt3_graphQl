@@ -1,5 +1,5 @@
 export interface LoginData {
   user: string;
-  mail: string;
+  email: string;
   password: string;
 }

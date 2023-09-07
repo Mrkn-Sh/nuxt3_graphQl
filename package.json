@@ -6,9 +6,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "prismagenerate": "prisma generate",
-    "prisma": "npx prisma"
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
     "@apollo/client": "^3.8.2",
@@ -21,13 +19,11 @@
     "@nuxt/devtools": "latest",
     "@nuxt/http": "^0.6.4",
     "@nuxt/types": "^2.17.1",
-    "@prisma/client": "^5.2.0",
     "element-plus": "^2.3.12",
     "eslint": "^8.46.0",
     "graphql": "^16.8.0",
     "nuxt": "^3.7.0",
     "prettier": "^3.0.0",
-    "prisma": "^5.2.0",
     "sass": "^1.63.3",
     "typescript": "^5.0.4"
   },

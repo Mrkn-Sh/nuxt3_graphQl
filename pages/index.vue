@@ -1,3 +1,5 @@
-<template>
-  <div>main</div>
-</template>
+<script setup>
+const router = useRouter();
+
+router.push('/login/');
+</script>

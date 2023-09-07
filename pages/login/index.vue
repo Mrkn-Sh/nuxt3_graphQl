@@ -1,33 +1,22 @@
+<script setup lang="ts">
+import { auth } from '~/composables/auth';
+import { LoginData } from '~/composables/types/interfaces';
+
+const loggedInUser = ref<string | null>(null);
+
+const login = (userData: LoginData) => {
+  if (userData.email === 'a@co.jp' && userData.password === 'a') {
+    auth().login(userData);
+
+    loggedInUser.value = auth().getLoggedInUser();
+  } else {
+    console.log('Login failed: Invalid credentials');
+  }
+};
+</script>
+
 <template>
   <div>
-    <el-form ref="loginForm" :model="loginForm" label-width="80px">
-      <el-form-item label="Username">
-        <el-input v-model="loginForm.username"></el-input>
-      </el-form-item>
-      <el-form-item label="Password">
-        <el-input type="password" v-model="loginForm.password"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="login">Login</el-button>
-      </el-form-item>
-    </el-form>
+    <LoginForm @login="login" />
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-
-const loginForm = ref({
-  username: '',
-  password: '',
-});
-
-const login = () => {
-};
-</script>
-
-<script>
-export default {
-  middleware: 'auth', 
-};
-</script>
