@@ -1,22 +1,24 @@
 import { LoginData } from "../types/interfaces";
 
-// status
-let isLoggedIn = false;
-
 export const auth = () => {
+  const isValidLogin = (data: LoginData): boolean => 
+    data.email === "a@co.jp" && data.password === "a";
+
   return {
-    login: (data: LoginData) => {
-      if (data.email === "a@co.jp" && data.password === "a") { 
-        isLoggedIn = true;
+    login: (data: LoginData): boolean => {
+      const loginSuccess = isValidLogin(data);
+      if (loginSuccess) {
+        sessionStorage.setItem('isLoggedIn', 'true'); 
       } else {
-        isLoggedIn = false;
+        sessionStorage.removeItem('isLoggedIn');
       }
+      return loginSuccess;
     },
     logout: () => {
-      isLoggedIn = false;
+      sessionStorage.removeItem('isLoggedIn');
     },
-    getLoginState: async () => {
-      return isLoggedIn;
+    getLoginState: () => {
+      return sessionStorage.getItem('isLoggedIn') === 'true';
     },
   };
 };
