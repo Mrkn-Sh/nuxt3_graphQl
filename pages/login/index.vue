@@ -6,7 +6,7 @@ const login = (userData: LoginData) => {
   if (auth().login(userData)) {
     useRouter().push('/home');
   } else {
-    console.log('Login failed: Invalid credentials');
+    console.error('Login failed: Invalid credentials');
   }
 };
 </script>

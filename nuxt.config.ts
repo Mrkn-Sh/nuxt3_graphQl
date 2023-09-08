@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { resolve } from 'path'; 
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -8,10 +9,16 @@ export default defineNuxtConfig({
     },
   },
   vite: {
+    resolve: {
+      alias: {
+        '~/': resolve(__dirname, './')
+      }
+    },
     plugins: [], // Allow usage of .gql/.graphql files
   },
    modules: [
     '@element-plus/nuxt'
   ],
-  elementPlus: { /** Options */ }
+  elementPlus: { /** Options */ },
+  components: true
 });
