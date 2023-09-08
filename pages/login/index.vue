@@ -2,13 +2,11 @@
 import { auth } from '~/composables/auth';
 import { LoginData } from '~/composables/types/interfaces';
 
-const loggedInUser = ref<string | null>(null);
-
 const login = (userData: LoginData) => {
   if (userData.email === 'a@co.jp' && userData.password === 'a') {
     auth().login(userData);
-
-    loggedInUser.value = auth().getLoggedInUser();
+    useRouter().push('/home')
+    
   } else {
     console.log('Login failed: Invalid credentials');
   }
