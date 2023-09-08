@@ -18,23 +18,39 @@ const login = () => {
 
   emits('login', userData); 
 };
-const updateEmail = (value: string) => loginForm.value.email = value;
-const updatePassword = (value: string) => loginForm.value.password = value;
+
 </script>
 
 <template>
-    <el-form ref="loginForm">
-        <el-form-item label="Email">
-            <el-input :modelValue="loginForm.email" @update:modelValue="updateEmail" type="email"
-                placeholder="mail address" />
-        </el-form-item>
-        <el-form-item label="Password">
-            <el-input :modelValue="loginForm.password" @update:modelValue="updatePassword" type="password" />
-        </el-form-item>
-        <el-col :span="1">
-            <el-button type="primary" @click="login">login</el-button>
-        </el-col>
-    </el-form>
+  <el-form 
+    ref="formRef"
+    :model="dynamicValidateForm"
+  >
+    <el-form-item
+      prop="email"
+      label="Email"
+      :rules="[
+        {
+          required: true,
+          message: 'Please input email address',
+          trigger: 'blur',
+        },
+        {
+          type: 'email',
+          message: 'Please input correct email address',
+          trigger: ['blur', 'change'],
+        },
+      ]"
+    >
+      <el-input v-model="loginForm.email" />
+    </el-form-item>
+    <el-form-item label="Password">
+      <el-input v-model="loginForm.password" />
+    </el-form-item>
+    <el-col :span="1">
+      <el-button type="primary" @click="login">login</el-button>
+    </el-col>
+  </el-form>
 </template>
 
 <style scoped>
