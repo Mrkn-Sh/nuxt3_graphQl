@@ -7,11 +7,13 @@ export default defineNuxtConfig({
       graphqlUrl: "http://localhost:3001/graphql",
     },
   },
-  vite: {
-    plugins: [], // Allow usage of .gql/.graphql files
+  build: {
+    // Remove or comment out the following line to exclude React as an external dependency
+    // external: ['react'],
   },
-   modules: [
+  modules: [
     '@element-plus/nuxt'
   ],
-  elementPlus: { /** Options */ }
+  elementPlus: { /** Options */ },
+  components: true
 });

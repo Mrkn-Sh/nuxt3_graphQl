@@ -6,31 +6,35 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "clean": "rm -rf node_modules dist .nuxt",
+    "lint": "eslint ./"
   },
   "devDependencies": {
-    "@apollo/client": "^3.8.2",
-    "@element-plus/nuxt": "^1.0.5",
     "@graphql-codegen/cli": "^3.3.1",
     "@graphql-codegen/typescript": "^3.0.4",
     "@graphql-codegen/typescript-operations": "^4.0.0",
     "@graphql-codegen/typescript-resolvers": "^4.0.0",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.7",
-    "@nuxt/devtools": "latest",
-    "@nuxt/http": "^0.6.4",
-    "@nuxt/types": "^2.17.1",
-    "element-plus": "^2.3.12",
+    "@nuxt/devtools": "^0.8.3",
+    "@nuxtjs/apollo": "^5.0.0-alpha.6",
+    "@nuxtjs/style-resources": "^1.2.1",
+    "@types/cors": "^2.8.13",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "@vue/apollo-composable": "^4.0.0-beta.4",
+    "element-plus": "^2.3.4",
     "eslint": "^8.46.0",
-    "graphql": "^16.8.0",
-    "nuxt": "^3.7.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-vue": "^9.16.1",
+    "nuxt": "^3.1.2",
     "prettier": "^3.0.0",
     "sass": "^1.63.3",
-    "typescript": "^5.0.4"
+    "sass-loader": "^10.4.1",
+    "typescript": "^5.0.4",
+    "@element-plus/nuxt": "^1.0.6",
+    "graphql": "^16.6.0"
   },
   "dependencies": {
-    "@nuxt/http": "^0.6.4",
-    "@nuxt/types": "^2.17.1",
-    "install": "^0.13.0",
-    "npm": "^10.0.0"
   }
 }
