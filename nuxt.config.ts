@@ -4,16 +4,20 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      graphqlUrl: "http://localhost:3001/graphql",
+      graphqlUrl: "http://localhost:8080/graphql",
     },
   },
-  build: {
-    // Remove or comment out the following line to exclude React as an external dependency
-    // external: ['react'],
+  modules: ["@element-plus/nuxt", "@nuxtjs/apollo"],
+  apollo: {
+    clients: {
+      default: {
+        httpEndpoint: "https://graphqlzero.almansi.me/api",
+        httpLinkOptions: {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      },
+    },
   },
-  modules: [
-    '@element-plus/nuxt'
-  ],
-  elementPlus: { /** Options */ },
-  components: true
 });
