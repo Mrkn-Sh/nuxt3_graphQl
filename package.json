@@ -18,12 +18,11 @@
     "@graphql-codegen/typescript-resolvers": "^4.0.0",
     "@graphql-codegen/typescript-vue-apollo": "^3.3.7",
     "@nuxt/devtools": "^0.8.3",
-    "@nuxtjs/apollo": "^5.0.0-alpha.6",
     "@nuxtjs/style-resources": "^1.2.1",
     "@types/cors": "^2.8.13",
     "@typescript-eslint/eslint-plugin": "^6.2.0",
     "@typescript-eslint/parser": "^6.2.0",
-    "@vue/apollo-composable": "^4.0.0-beta.4",
+    "@vue/apollo-composable": "^4.0.0-beta.11",
     "element-plus": "^2.3.14",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
@@ -36,6 +35,10 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@apollo/client": "^3.8.3"
+    "@apollo/client": "^3.8.3",
+    "@types/graphql": "^14.5.0",
+    "dotenv": "^16.3.1",
+    "graphql-tag": "^2.12.6",
+    "vue": "^3.2.0"
   }
 }
