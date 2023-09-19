@@ -3,6 +3,7 @@ import { ref, watch } from 'vue';
 import { provideApolloClient, useQuery } from '@vue/apollo-composable';
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client/core';
 import gql from 'graphql-tag';
+import svg from '@/assets/loading.svg'
 
 type Country = {
   code: string;
@@ -10,10 +11,9 @@ type Country = {
   emoji: string;
   capital: string;
   currencies: string[];
-  awsRegion?: string; // awsRegion은 optional로 처리
-  currency?: string;  // currency도 optional로 처리
+  awsRegion?: string; 
+  currency?: string;  
 };
-
 
 const loading = ref(true);
 const error = ref(null);
@@ -56,22 +56,24 @@ if (typeof window !== "undefined") {
   });
 
   watch(dataRef, newVal => {
-    console.log('DataRef updated:', newVal);
     result.value = newVal;
-    console.log('Result updated:', result.value);
   });
 }
-console.log('data', result.value)
 </script>
 
 <template>
   <div>
     Home
     <div v-if="loading">
-      데이터 로딩 중...
+    <el-table v-loading="loading"
+      element-loading-text="Loading..."
+      :element-loading-spinner="svg"
+      element-loading-svg-view-box="-10, -10, 50, 50"
+      element-loading-background="rgba(122, 122, 122, 0.8)" 
+    />
     </div>
     <div v-else-if="error">
-      데이터를 불러오는 중에 오류가 발생했습니다: {{ error.message }}
+      데이터를 불러오는 중에 오류가 발생했습니다
     </div>
   <div v-else-if="result.countries && result.countries.length">
     <div v-for="(country, index) in result.countries" :key="index">
