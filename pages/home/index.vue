@@ -1,18 +1,8 @@
 <script setup lang="ts">
-import { provideApolloClient } from '@vue/apollo-composable';
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
 import { execCountriesQuery } from '@/composables/api';
 
-const apolloClient = new ApolloClient({
-  uri: "http://localhost:4000/graphql", 
-  cache: new InMemoryCache(),
-});
-
-provideApolloClient(apolloClient);
-
 const { countries, loading, error } = execCountriesQuery();
-console.log("!!!!", countries.value)
-
+console.log("!!!!", countries.value);
 </script>
 
 <template>
@@ -22,7 +12,7 @@ console.log("!!!!", countries.value)
     <div v-if="countries && countries.length">
       <ul>
         <li v-for="(country, index) in countries" :key="index">
-          {{ country }}
+          {{ country.name }}
         </li>
       </ul>
     </div>

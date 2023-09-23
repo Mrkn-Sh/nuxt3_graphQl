@@ -11,11 +11,6 @@ export default defineNuxtConfig({
     clientConfigs: {
       default: {
         httpEndpoint: 'http://localhost:4000/graphql',
-        httpLinkOptions: {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
       },
     },
   },
