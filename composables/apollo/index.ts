@@ -1,12 +1,36 @@
-// composables/apollo/index.ts
+import { useQuery } from '@apollo/client';
+import gql from 'graphql-tag';
+import { apolloClient } from '~/apolloClient';
 
-import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+export function useCountries() {
+  const state = reactive({
+    countries: [],
+    loading: false,
+    error: null,
+  });
 
-// Apollo Client 
-const apolloClient = new ApolloClient({
-  uri: process.env.NUXT_ENV_GRAPHQL_URL,
-  cache: new InMemoryCache(),
-});
+  const GET_COUNTRIES = gql`
+    {
+      countries {
+        code
+        name
+        emoji
+      }
+    }
+  `;
 
+  const { data, loading, error } = useQuery(GET_COUNTRIES, {
+    client: apolloClient,
+  });
 
-export { apolloClient }; 
+  if (loading) {
+    state.loading = true;
+  } else if (error) {
+    state.error = error;
+  } else if (data) {
+    state.countries = data.countries;
+    state.loading = false;
+  }
+
+  return state;
+}

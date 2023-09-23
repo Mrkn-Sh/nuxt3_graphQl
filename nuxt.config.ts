@@ -2,14 +2,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-       graphqlUrl: "https://countries.trevorblades.com/",
+      graphqlUrl: "https://countries.trevorblades.com/",
     },
   },
+  buildModules: ["@nuxtjs/apollo"], 
   modules: ["@element-plus/nuxt"],
-  /*apollo: {
-    clients: {
+  apollo: {
+    clientConfigs: {
       default: {
-        httpEndpoint: process.env.NUXT_ENV_GRAPHQL_URL || "http://localhost:8080/graphql",
+        httpEndpoint: 'http://localhost:4000/graphql',
         httpLinkOptions: {
           headers: {
             "Content-Type": "application/json",
@@ -17,5 +18,5 @@ export default defineNuxtConfig({
         },
       },
     },
-  },*/
+  },
 });

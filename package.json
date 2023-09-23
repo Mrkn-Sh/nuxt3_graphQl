@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
+    "@nuxtjs/apollo": "^4.0.1-rc.5",
     "@types/graphql": "^14.5.0",
     "dotenv": "^16.3.1",
     "graphql-tag": "^2.12.6",

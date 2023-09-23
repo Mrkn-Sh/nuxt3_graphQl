@@ -21,119 +21,116 @@ export type Scalars = {
 };
 
 export type Continent = {
-  code: Scalars['ID']['output'];
-  countries: Array<Country>;
-  name: Scalars['String']['output'];
+  code?: Maybe<Scalars['String']['output']>;
+  countries?: Maybe<Array<Maybe<Country>>>;
+  name?: Maybe<Scalars['String']['output']>;
 };
 
-export type ContinentFilterInput = {
-  code?: InputMaybe<StringQueryOperatorInput>;
+export type ContinentInput = {
+  code: Scalars['String']['input'];
+  countries?: InputMaybe<Array<InputMaybe<CountryInput>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Country = {
-  awsRegion: Scalars['String']['output'];
+  awsRegion?: Maybe<Scalars['String']['output']>;
   capital?: Maybe<Scalars['String']['output']>;
-  code: Scalars['ID']['output'];
-  continent: Continent;
-  currencies: Array<Scalars['String']['output']>;
+  code?: Maybe<Scalars['String']['output']>;
+  continent?: Maybe<Continent>;
+  currencies?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   currency?: Maybe<Scalars['String']['output']>;
-  emoji: Scalars['String']['output'];
-  emojiU: Scalars['String']['output'];
-  languages: Array<Language>;
-  name: Scalars['String']['output'];
-  native: Scalars['String']['output'];
-  phone: Scalars['String']['output'];
-  phones: Array<Scalars['String']['output']>;
-  states: Array<State>;
-  subdivisions: Array<Subdivision>;
+  emoji?: Maybe<Scalars['String']['output']>;
+  emojiU?: Maybe<Scalars['String']['output']>;
+  languages?: Maybe<Array<Maybe<Language>>>;
+  name?: Maybe<Scalars['String']['output']>;
+  native?: Maybe<Scalars['String']['output']>;
+  phone?: Maybe<Scalars['String']['output']>;
+  phones?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  states?: Maybe<Array<Maybe<State>>>;
 };
 
-
-export type CountryNameArgs = {
-  lang?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type CountryFilterInput = {
-  code?: InputMaybe<StringQueryOperatorInput>;
-  continent?: InputMaybe<StringQueryOperatorInput>;
-  currency?: InputMaybe<StringQueryOperatorInput>;
-  name?: InputMaybe<StringQueryOperatorInput>;
+export type CountryInput = {
+  awsRegion?: InputMaybe<Scalars['String']['input']>;
+  capital?: InputMaybe<Scalars['String']['input']>;
+  code?: InputMaybe<Scalars['String']['input']>;
+  continent?: InputMaybe<ContinentInput>;
+  currencies?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  currency?: InputMaybe<Scalars['String']['input']>;
+  emoji?: InputMaybe<Scalars['String']['input']>;
+  emojiU?: InputMaybe<Scalars['String']['input']>;
+  languages?: InputMaybe<Array<InputMaybe<LanguageInput>>>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  native?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  phones?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  states?: InputMaybe<Array<InputMaybe<StateInput>>>;
 };
 
 export type Language = {
-  code: Scalars['ID']['output'];
-  name: Scalars['String']['output'];
-  native: Scalars['String']['output'];
-  rtl: Scalars['Boolean']['output'];
+  code?: Maybe<Scalars['String']['output']>;
+  name?: Maybe<Scalars['String']['output']>;
+  native?: Maybe<Scalars['String']['output']>;
+  rtl?: Maybe<Scalars['Boolean']['output']>;
 };
 
-export type LanguageFilterInput = {
-  code?: InputMaybe<StringQueryOperatorInput>;
+export type LanguageInput = {
+  code: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
+  native?: InputMaybe<Scalars['String']['input']>;
+  rtl?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+export type Mutation = {
+  addCountry?: Maybe<Country>;
+  deleteCountry?: Maybe<Scalars['Boolean']['output']>;
+  updateCountry?: Maybe<Country>;
+};
+
+
+export type MutationAddCountryArgs = {
+  awsRegion?: InputMaybe<Scalars['String']['input']>;
+  capital?: InputMaybe<Scalars['String']['input']>;
+  code: Scalars['String']['input'];
+  continent?: InputMaybe<ContinentInput>;
+  currencies?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  currency?: InputMaybe<Scalars['String']['input']>;
+  emoji?: InputMaybe<Scalars['String']['input']>;
+  emojiU?: InputMaybe<Scalars['String']['input']>;
+  languages?: InputMaybe<Array<InputMaybe<LanguageInput>>>;
+  name: Scalars['String']['input'];
+  native?: InputMaybe<Scalars['String']['input']>;
+  phone?: InputMaybe<Scalars['String']['input']>;
+  phones?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  states?: InputMaybe<Array<InputMaybe<StateInput>>>;
+};
+
+
+export type MutationDeleteCountryArgs = {
+  code: Scalars['String']['input'];
+};
+
+
+export type MutationUpdateCountryArgs = {
+  code: Scalars['String']['input'];
+  name?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type Query = {
-  continent?: Maybe<Continent>;
-  continents: Array<Continent>;
-  countries: Array<Country>;
-  country?: Maybe<Country>;
-  language?: Maybe<Language>;
-  languages: Array<Language>;
-};
-
-
-export type QueryContinentArgs = {
-  code: Scalars['ID']['input'];
-};
-
-
-export type QueryContinentsArgs = {
-  filter?: InputMaybe<ContinentFilterInput>;
-};
-
-
-export type QueryCountriesArgs = {
-  filter?: InputMaybe<CountryFilterInput>;
-};
-
-
-export type QueryCountryArgs = {
-  code: Scalars['ID']['input'];
-};
-
-
-export type QueryLanguageArgs = {
-  code: Scalars['ID']['input'];
-};
-
-
-export type QueryLanguagesArgs = {
-  filter?: InputMaybe<LanguageFilterInput>;
+  countries?: Maybe<Array<Maybe<Country>>>;
 };
 
 export type State = {
   code?: Maybe<Scalars['String']['output']>;
-  country: Country;
-  name: Scalars['String']['output'];
 };
 
-export type StringQueryOperatorInput = {
-  eq?: InputMaybe<Scalars['String']['input']>;
-  in?: InputMaybe<Array<Scalars['String']['input']>>;
-  ne?: InputMaybe<Scalars['String']['input']>;
-  nin?: InputMaybe<Array<Scalars['String']['input']>>;
-  regex?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type Subdivision = {
-  code: Scalars['ID']['output'];
-  emoji?: Maybe<Scalars['String']['output']>;
-  name: Scalars['String']['output'];
+export type StateInput = {
+  code?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type CountriesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CountriesQuery = { countries: Array<{ code: string, name: string, emoji: string, phone: string, emojiU: string, native: string, phones: Array<string>, capital?: string | null, currency?: string | null, awsRegion: string, currencies: Array<string>, states: Array<{ code?: string | null }>, continent: { code: string, name: string, countries: Array<{ capital?: string | null, currency?: string | null }> }, languages: Array<{ rtl: boolean, code: string, name: string, native: string }> }> };
+export type CountriesQuery = { countries?: Array<{ code?: string | null, name?: string | null, emoji?: string | null, phone?: string | null, emojiU?: string | null, native?: string | null, phones?: Array<string | null> | null, capital?: string | null, currency?: string | null, awsRegion?: string | null, currencies?: Array<string | null> | null, states?: Array<{ code?: string | null } | null> | null, continent?: { code?: string | null, name?: string | null, countries?: Array<{ capital?: string | null, currency?: string | null } | null> | null } | null, languages?: Array<{ rtl?: boolean | null, code?: string | null, name?: string | null, native?: string | null } | null> | null } | null> | null };
 
 
 export const CountriesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Countries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"countries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"emoji"}},{"kind":"Field","name":{"kind":"Name","value":"phone"}},{"kind":"Field","name":{"kind":"Name","value":"emojiU"}},{"kind":"Field","name":{"kind":"Name","value":"native"}},{"kind":"Field","name":{"kind":"Name","value":"phones"}},{"kind":"Field","name":{"kind":"Name","value":"states"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}}]}},{"kind":"Field","name":{"kind":"Name","value":"capital"}},{"kind":"Field","name":{"kind":"Name","value":"currency"}},{"kind":"Field","name":{"kind":"Name","value":"awsRegion"}},{"kind":"Field","name":{"kind":"Name","value":"continent"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"countries"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"capital"}},{"kind":"Field","name":{"kind":"Name","value":"currency"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"currencies"}},{"kind":"Field","name":{"kind":"Name","value":"languages"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"rtl"}},{"kind":"Field","name":{"kind":"Name","value":"code"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"native"}}]}}]}}]}}]} as unknown as DocumentNode;
@@ -230,94 +227,85 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
   Continent: ResolverTypeWrapper<Continent>;
-  ContinentFilterInput: ContinentFilterInput;
+  ContinentInput: ContinentInput;
   Country: ResolverTypeWrapper<Country>;
-  CountryFilterInput: CountryFilterInput;
-  Float: ResolverTypeWrapper<Scalars['Float']['output']>;
-  ID: ResolverTypeWrapper<Scalars['ID']['output']>;
-  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
+  CountryInput: CountryInput;
   Language: ResolverTypeWrapper<Language>;
-  LanguageFilterInput: LanguageFilterInput;
+  LanguageInput: LanguageInput;
+  Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
   State: ResolverTypeWrapper<State>;
+  StateInput: StateInput;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
-  StringQueryOperatorInput: StringQueryOperatorInput;
-  Subdivision: ResolverTypeWrapper<Subdivision>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean']['output'];
   Continent: Continent;
-  ContinentFilterInput: ContinentFilterInput;
+  ContinentInput: ContinentInput;
   Country: Country;
-  CountryFilterInput: CountryFilterInput;
-  Float: Scalars['Float']['output'];
-  ID: Scalars['ID']['output'];
-  Int: Scalars['Int']['output'];
+  CountryInput: CountryInput;
   Language: Language;
-  LanguageFilterInput: LanguageFilterInput;
+  LanguageInput: LanguageInput;
+  Mutation: {};
   Query: {};
   State: State;
+  StateInput: StateInput;
   String: Scalars['String']['output'];
-  StringQueryOperatorInput: StringQueryOperatorInput;
-  Subdivision: Subdivision;
 };
 
+export type SpecifiedByDirectiveArgs = {
+  url: Scalars['String']['input'];
+};
+
+export type SpecifiedByDirectiveResolver<Result, Parent, ContextType = any, Args = SpecifiedByDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
+
 export type ContinentResolvers<ContextType = any, ParentType extends ResolversParentTypes['Continent'] = ResolversParentTypes['Continent']> = {
-  code?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  countries?: Resolver<Array<ResolversTypes['Country']>, ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  code?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  countries?: Resolver<Maybe<Array<Maybe<ResolversTypes['Country']>>>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type CountryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Country'] = ResolversParentTypes['Country']> = {
-  awsRegion?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  awsRegion?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   capital?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  code?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  continent?: Resolver<ResolversTypes['Continent'], ParentType, ContextType>;
-  currencies?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
+  code?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  continent?: Resolver<Maybe<ResolversTypes['Continent']>, ParentType, ContextType>;
+  currencies?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
   currency?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  emoji?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  emojiU?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  languages?: Resolver<Array<ResolversTypes['Language']>, ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType, Partial<CountryNameArgs>>;
-  native?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  phone?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  phones?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
-  states?: Resolver<Array<ResolversTypes['State']>, ParentType, ContextType>;
-  subdivisions?: Resolver<Array<ResolversTypes['Subdivision']>, ParentType, ContextType>;
+  emoji?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  emojiU?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  languages?: Resolver<Maybe<Array<Maybe<ResolversTypes['Language']>>>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  native?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  phone?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  phones?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
+  states?: Resolver<Maybe<Array<Maybe<ResolversTypes['State']>>>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type LanguageResolvers<ContextType = any, ParentType extends ResolversParentTypes['Language'] = ResolversParentTypes['Language']> = {
-  code?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  native?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  rtl?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
+  code?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  name?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  native?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  rtl?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  addCountry?: Resolver<Maybe<ResolversTypes['Country']>, ParentType, ContextType, RequireFields<MutationAddCountryArgs, 'code' | 'name'>>;
+  deleteCountry?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<MutationDeleteCountryArgs, 'code'>>;
+  updateCountry?: Resolver<Maybe<ResolversTypes['Country']>, ParentType, ContextType, RequireFields<MutationUpdateCountryArgs, 'code'>>;
+};
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  continent?: Resolver<Maybe<ResolversTypes['Continent']>, ParentType, ContextType, RequireFields<QueryContinentArgs, 'code'>>;
-  continents?: Resolver<Array<ResolversTypes['Continent']>, ParentType, ContextType, RequireFields<QueryContinentsArgs, 'filter'>>;
-  countries?: Resolver<Array<ResolversTypes['Country']>, ParentType, ContextType, RequireFields<QueryCountriesArgs, 'filter'>>;
-  country?: Resolver<Maybe<ResolversTypes['Country']>, ParentType, ContextType, RequireFields<QueryCountryArgs, 'code'>>;
-  language?: Resolver<Maybe<ResolversTypes['Language']>, ParentType, ContextType, RequireFields<QueryLanguageArgs, 'code'>>;
-  languages?: Resolver<Array<ResolversTypes['Language']>, ParentType, ContextType, RequireFields<QueryLanguagesArgs, 'filter'>>;
+  countries?: Resolver<Maybe<Array<Maybe<ResolversTypes['Country']>>>, ParentType, ContextType>;
 };
 
 export type StateResolvers<ContextType = any, ParentType extends ResolversParentTypes['State'] = ResolversParentTypes['State']> = {
   code?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  country?: Resolver<ResolversTypes['Country'], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
-};
-
-export type SubdivisionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Subdivision'] = ResolversParentTypes['Subdivision']> = {
-  code?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  emoji?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -325,8 +313,11 @@ export type Resolvers<ContextType = any> = {
   Continent?: ContinentResolvers<ContextType>;
   Country?: CountryResolvers<ContextType>;
   Language?: LanguageResolvers<ContextType>;
+  Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
   State?: StateResolvers<ContextType>;
-  Subdivision?: SubdivisionResolvers<ContextType>;
 };
 
+export type DirectiveResolvers<ContextType = any> = {
+  specifiedBy?: SpecifiedByDirectiveResolver<any, any, ContextType>;
+};

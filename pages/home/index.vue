@@ -1,87 +1,30 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import { provideApolloClient, useQuery } from '@vue/apollo-composable';
-import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client/core';
-import gql from 'graphql-tag';
-import svg from '@/assets/loading.svg'
+import { provideApolloClient } from '@vue/apollo-composable';
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+import { execCountriesQuery } from '@/composables/api';
 
-type Country = {
-  code: string;
-  name: string;
-  emoji: string;
-  capital: string;
-  currencies: string[];
-  awsRegion?: string; 
-  currency?: string;  
-};
+const apolloClient = new ApolloClient({
+  uri: "http://localhost:4000/graphql", 
+  cache: new InMemoryCache(),
+});
 
-const loading = ref(true);
-const error = ref(null);
-const result = ref<{ countries?: Country[] }>({});
+provideApolloClient(apolloClient);
 
-if (typeof window !== "undefined") {
-  const httpLink = new HttpLink({
-    uri: "https://countries.trevorblades.com/",
-  });
+const { countries, loading, error } = execCountriesQuery();
+console.log("!!!!", countries.value)
 
-  const apolloClient = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache(),
-  });
-
-  provideApolloClient(apolloClient);
-
-  const QUERY = gql`
-    query {
-      countries {
-        code
-        name
-        emoji
-        capital
-        currencies
-        awsRegion
-        currency
-      }
-    }
-  `;
-
-  const { loading: loadingRef, error: errorRef, result: dataRef } = useQuery(QUERY);
-
-  watch(loadingRef, newVal => {
-    loading.value = newVal;
-  });
-
-  watch(errorRef, newVal => {
-    error.value = newVal;
-  });
-
-  watch(dataRef, newVal => {
-    result.value = newVal;
-  });
-}
 </script>
 
 <template>
   <div>
-    Home
-    <div v-if="loading">
-    <el-table v-loading="loading"
-      element-loading-text="Loading..."
-      :element-loading-spinner="svg"
-      element-loading-svg-view-box="-10, -10, 50, 50"
-      element-loading-background="rgba(122, 122, 122, 0.8)" 
-    />
+    <div v-if="loading">Loading...</div>
+    <div v-if="error">{{ error.message }}</div>
+    <div v-if="countries && countries.length">
+      <ul>
+        <li v-for="(country, index) in countries" :key="index">
+          {{ country }}
+        </li>
+      </ul>
     </div>
-    <div v-else-if="error">
-      데이터를 불러오는 중에 오류가 발생했습니다
-    </div>
-  <div v-else-if="result.countries && result.countries.length">
-    <div v-for="(country, index) in result.countries" :key="index">
-      name: {{ country.name }} <br />
-      code:  {{ country.code }} <br />
-      capital: {{ country.capital }} <br />
-      emoji : {{ country.emoji }}
-    </div>
-  </div>
   </div>
 </template>
