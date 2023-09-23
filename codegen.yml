@@ -1,0 +1,18 @@
+schema:
+  - https://countries.trevorblades.com/
+documents:
+  - ./graphql/**/*.graphql
+generates:
+  composables/_generated/operations.ts:
+    config:
+      documentMode: documentNode
+      useTypeImports: true
+      vueCompositionApiImportFrom: vue
+      skipTypename: true
+      scalars:
+        Upload: File
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-apollo
+      - typescript-resolvers

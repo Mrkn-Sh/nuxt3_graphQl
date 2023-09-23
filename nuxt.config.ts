@@ -1,17 +1,21 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
-
 export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      graphqlUrl: "http://localhost:3001/graphql",
+       graphqlUrl: "https://countries.trevorblades.com/",
     },
   },
-  vite: {
-    plugins: [], // Allow usage of .gql/.graphql files
-  },
-   modules: [
-    '@element-plus/nuxt'
-  ],
-  elementPlus: { /** Options */ }
+  modules: ["@element-plus/nuxt"],
+  /*apollo: {
+    clients: {
+      default: {
+        httpEndpoint: process.env.NUXT_ENV_GRAPHQL_URL || "http://localhost:8080/graphql",
+        httpLinkOptions: {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        },
+      },
+    },
+  },*/
 });

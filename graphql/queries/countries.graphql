@@ -1,0 +1,32 @@
+query Countries {
+  countries {
+    code
+    name
+    emoji
+    phone
+    emojiU
+    native
+    phones
+    states {
+      code
+    }
+    capital
+    currency
+    awsRegion
+    continent {
+      code
+      name
+      countries {
+        capital
+        currency
+      }
+    }
+    currencies
+    languages {
+      rtl
+      code
+      name
+      native
+    }
+  }
+}
