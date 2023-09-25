@@ -1,8 +1,18 @@
-import { useCountriesQuery, Country } from "./_generated/operations";
+// api.ts
+import { ApolloClient, InMemoryCache } from '@apollo/client/core';
+import { provideApolloClient } from '@vue/apollo-composable';
+import { useCountriesQuery, Country } from './_generated/operations';
+
+const apolloClient = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache(),
+});
+
+provideApolloClient(apolloClient);
 
 export const execCountriesQuery = () => {
   const { loading, error, result } = useCountriesQuery({
-    fetchPolicy: "no-cache"
+    fetchPolicy: 'no-cache',
   });
 
   const countries = ref<Country[]>([]);
@@ -11,12 +21,11 @@ export const execCountriesQuery = () => {
     if (newVal?.countries) {
       countries.value = newVal.countries;
     }
-    console.log("Updated countries:", countries.value);
   });
 
   return {
     loading,
     error,
-    countries
+    countries,
   };
 };

@@ -3,6 +3,6 @@
   "compilerOptions": {
     "allowJs": true,
     "moduleResolution": "node",
-    "types": ["node", "express", "@apollo/client"]
+      "types": ["node", "express", "@apollo/client", "@vue/apollo-composable"]
   }
 }

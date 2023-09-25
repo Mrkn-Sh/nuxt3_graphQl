@@ -1,10 +1,5 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  runtimeConfig: {
-    public: {
-      graphqlUrl: "https://countries.trevorblades.com/",
-    },
-  },
   buildModules: ["@nuxtjs/apollo"], 
   modules: ["@element-plus/nuxt"],
   apollo: {
